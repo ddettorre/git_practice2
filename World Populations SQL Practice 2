@@ -1,0 +1,40 @@
+SELECT COUNT(continent)
+FROM countries
+WHERE continent = 'Africa';
+
+SELECT SUM(population)
+FROM population_years
+JOIN countries
+  ON population_years.country_id = countries.id
+WHERE population_years.year = 2005
+AND countries.continent = 'Oceania';
+
+SELECT ROUND(AVG(population), 2)
+FROM population_years
+JOIN countries
+  ON population_years.country_id = countries.id
+WHERE population_years.year = 2003
+AND countries.continent = 'South America';
+
+SELECT MIN(population), *
+FROM population_years
+JOIN countries
+  ON population_years.country_id = countries.id
+WHERE year = 2007;
+
+SELECT AVG(population)
+FROM population_years
+JOIN countries
+  ON population_years.country_id = countries.id
+WHERE countries.name = 'Poland';
+
+SELECT COUNT(*)
+FROM countries
+WHERE name LIKE '%the%';
+
+SELECT *, SUM(population)
+FROM population_years
+JOIN countries
+  ON population_years.country_id = countries.id
+WHERE population_years.year = 2010
+GROUP BY countries.continent;
